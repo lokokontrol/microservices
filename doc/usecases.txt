@@ -1,0 +1,49 @@
+/'  
+intellipay
+===================
+
+1. subsection
+
+
+'/ 
+
+@startuml
+
+left to right direction
+
+/'  
+actors
+==================
+'/ 
+
+
+actor customer
+actor user 
+actor merchant 
+actor :new user:
+
+user <|-down- customer
+user <|-down- merchant
+
+
+/'  
+context
+==================
+'/ 
+
+rectangle  {
+	customer -- (withdraw cash)
+	merchant -- (withdraw cash)
+	merchant -- (accept payments)
+	user -- (authentication)
+	:new user: -- (join in)
+	merchant -- (return funds to customer)
+	customer -- (return funds to customer)
+}
+
+
+
+
+
+
+@enduml

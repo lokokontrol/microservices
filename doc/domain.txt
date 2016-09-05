@@ -1,0 +1,93 @@
+/'  
+celia domain diagram
+===================
+'/ 
+
+
+@startuml
+
+title INTELLIPAY BUSINESS DOMAIN
+
+left to right direction
+
+class Merchant
+class TransactionType
+enum TransactionTypes {
+ SALE
+ WITHDRAW
+ TRANSFER
+ CREDIT
+ PREAUTH 
+ POSTAUTH
+ BET
+ RECURRINGPAYMENT
+ RETURN
+} 
+
+class Action
+
+
+class CreditCardData {
+ number
+ expirationMonth
+ expirationYear
+ codeValue
+}
+
+
+class Inquiry{
+ orderId: String
+}
+	note left of (Inquiry)
+	 	allows you to get details about previously processed transactions of
+		a specific order. You therefore need to submit the corresponding Order ID
+	end note
+
+
+/'  
+base types
+===========================
+'/
+
+
+package "basetypes" {
+class Address
+class ShippingAddress
+class ItemList
+class Item
+}
+
+ItemList o-- " * " Item
+Address <|-- ShippingAddress
+
+/'  
+payments
+===========================
+'/
+
+package "payments"{
+
+class Payment
+class Sale
+class Transaction
+class Payer 
+class PayerInfo
+class FundingInstrument
+
+}
+Payment o-- " 1 " Payer
+Payer o-- " * " FundingInstrument
+Payment o-- " * " Transaction
+Transaction o-- " 1 " ItemList
+
+
+
+
+/'  
+module
+===========================
+'/
+
+
+
+@enduml

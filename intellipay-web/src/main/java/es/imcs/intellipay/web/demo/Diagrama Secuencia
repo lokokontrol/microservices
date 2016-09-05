@@ -1,0 +1,19 @@
+@startuml
+
+
+
+Web -> Feign: Authentication Request
+Feign -> Zuul: Authentication Request
+Zuul -> Microservice: Authentication Request
+
+Microservice -> Services: Authentication Request
+
+Services -> Repositories: Authentication Request
+Repositories --> Services: Authentication Response
+Services --> Microservice: Authentication Response
+Microservice --> Feign: Authentication Request
+Feign --> Web: Authentication Request
+
+
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+
+
+package Microservices{
+	[Payments] 
+	[Accounts]
+}
+
+package bbdd{
+	database payments
+	database accounts
+}
+
+[Web] -> feign
+
+[API/REST]
+
+feign -> [API/REST]
+
+[API/REST] -> Zuul
+
+Zuul --> Microservices
+
+[Accounts] --> accounts
+[Payments] --> payments
+
+Microservices ---> [Eureka] 
+Web ---> [Eureka]
+[API/REST] ---> [Eureka]
+[Eureka] -> [Eureka]
+[Turbine] --> [Eureka]
+@enduml

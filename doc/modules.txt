@@ -1,0 +1,66 @@
+/'  
+intellipay  modules
+===================
+
+1. functional modules
+2. technical modules
+
+
+'/ 
+
+@startuml
+
+title INTELLIPAY MODULES
+
+left to right direction
+
+/'  
+1. functional modules
+==================
+'/ 
+
+/'  
+ADMINISTRATION, SECURITY & AUDITING
+=========================
+'/ 
+
+frame "ADMINISTRATION, SECURITY & AUDITING" {
+
+component [USERS]
+
+	note left of (USERS)
+	 manages users, roles ,permissions
+	end note
+
+component  [SECURITY] #Gray	
+
+component [BACKUP/RESTORE] #Gray
+component [CONFIGURATION] #Gray
+component [METRICS] #Gray
+component [DEPLOY] #Gray
+component [TRACKING] #Gray
+component [LOG] #Gray
+component [SCHEDULER] #Gray
+component [GLOBALIZATION] #Gray
+
+component [IMPORT]
+
+component [EXPORT]
+
+component [ADMIN]
+
+	note left of (ADMIN)
+	 system management
+	end note
+	
+}
+
+
+
+/'  
+3. interactions
+============
+'/ 
+
+
+@enduml

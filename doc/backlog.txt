@@ -1,0 +1,30 @@
+intellipay backlog
+------------------
+	 
+wiki
+-----
+
+A) Terminología modulos comunes desarrollos con microservicios
+
+B) Proyecto intellipay
+
+code
+
+----
+
+1 account module 
+2 account microservice
+3 payment module
+4 payment microservice
+5 authenticacion module
+6 authentication microservice
+7 eureka server
+8 api-gateway microservice
+9 intellipay web
+
+documents
+----------
+
+1 presentacion con elñ resultado final de la prueba de concepto
+
+

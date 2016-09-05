@@ -1,0 +1,70 @@
+/'  
+celia commissions subsystem
+===================
+
+1. subsection
+
+
+'/ 
+
+@startuml
+
+title CELIA commissions logical components
+
+left to right direction
+
+/'  
+1. functional modules
+==================
+'/ 
+component "kie execution server" {
+component  [rule execution container]
+}
+component  [jBPM]
+component  [drools workbench]
+component [batch component]
+component "CELIA backend app" {
+	component "backend service"
+	component "business entity"
+}
+component "CELIA client app" {
+	component "frontend service"
+}
+component "CELIA rules system interface" {
+	component [drools workbench interface]
+	component [jBPM interface]
+	component [KIE interface]
+}
+component "jBPM" {
+	component "business process"
+}
+database "database" {
+  [operational model] 
+  [informational model]
+}
+
+database "rules storage" {
+  [rule] 
+}
+
+
+[business process] ..> [backend service]
+[business process] ..> [batch component]
+[business process] ..> [rule execution container]
+[rule execution container] ..> [rule]
+[business process] ..> [rule input reader]
+[business process] ..> [rule output writer]
+[frontend service] ..> [backend service]
+[backend service] ..> [operational model]
+[batch component] ..> [informational model]
+[rule] ..> [business entity]
+[drools workbench] ..> [rule]
+[drools workbench] ..> [business entity]
+[rule input reader] ..> [informational model]
+[rule output writer] ..> [informational model]
+[rule output writer] ..> [operational model]
+[drools workbench interface] ..> [drools workbench] 
+[jBPM interface] ..> [business process]
+[KIE interface] ..> [rule execution container]
+
+@enduml
